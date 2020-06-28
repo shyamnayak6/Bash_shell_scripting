@@ -1,0 +1,99 @@
+grep -i bash ./variable | wc -l
+ps -aux|grep <Process> i.e java
+netstat -apn|grep <port>
+iostat 
+ top  | awk '{print $1}'
+ du -skh *
+ df -h
+ grep -i error /var/log/*
+ date |awk '{print $1}'
+ find /home/user/scripts -mtime +0 -exec ls -l {} \;  // 0 is one day old file
+ find /home/user/scripts -mtime +0 -exec cp {} {}.old \; // find matching files and rename to .old
+ find /home/user/scripts/ -mtime -1 -type f -print &> /dev/null // dev/null to flushout the out put and not to throw on screen
+ last // user logged in to the systems
+ 
+ *********************************************************SED********************************
+ sed '^$/d' <file name>  // Delete empty line foma file
+ sed '1,2d' <file name>  //delete 1,2nd line
+ sed 's/\t/ /g' <file>  //delete tab space and replace with space
+ sed G <fil name  > //add an empty line after each line
+ sed '8!s/Sea/S/g' <file name> //replace Sea with S except line 8
+ vi ediator -> :%s/substistute/replace/g   //replace in vi ediator
+
+*****************************Utility Command********************
+date
+uptime
+umame -a /host details
+which //location of the command you run
+cal
+cal 9 2020
+cal 2020
+ls -l
+bc // do arithmetic operation
+
+***********************************Log monitoring*********************
+/var/log
+1. boot //reboot info
+2.chrony //NTP service means any changes to service log
+3.cron //job or process related cron 
+4.maillog //send mail info
+5.secure //records all user login activities
+6.message //related hardware,software,process and application info
+7.httpd  //
+
+
+******************************Terminal Commands ******************************
+clear
+exit
+script <script name> // stores terminal activities of user stored in a file
+more <filename>
+
+***************************Alias*************************
+alias ls="ls -al"
+alias pd="pwd; ls"
+df -h|awk '{print $6}'|cut -c1-4
+alias dn="df -h|awk '{print \$6}'|cut -c1-4"   // \$ to tesll syste not to treat it as a variable
+alias la='ls -A'
+alias ll='ls -alF'
+alias ls='ls --color=auto'
+alias  // to list all the alias commands
+
+
+********************************find**************************************************
+
+
+1.Find Files Using Name in Current Directory Find all the files whose name is sometext.txt in a current working directory.
+find . -name sometext.txt 
+
+2. Find Files Under Home Directory Find all the files under /home directory with name sometext.txt.
+find /home -name sometext.txt
+
+3. Find Files Using Name and Ignoring Case
+Find all the files whose name is sometext.txt and contains both capital and small letters in /home directory.
+find /home -iname sometext.txt
+
+4. Find Directories Using Name Find all directories whose name is sometext in / directory.
+find / -type d -name sometext
+
+5. Find PHP Files Using Name Find all php files whose name is sometext.php in a current working directory.
+find . -type f -name sometext.php
+
+6. Find Files with 777 Permissions and Chmod to 644 Find all 777 permission files and use chmod command to set permissions to 644.
+find / -type f -perm 0777 -print -exec chmod 644 {} ;
+
+7. Find and remove single File To find a single file called sometext.txt and remove it.
+find . -type f -name "sometext.txt" -exec rm -f {} ;
+
+8. Find all empty files in current directory
+find . -type f -empty
+
+9. Find and delete all empty files in current directory
+find . -type f -empty -print -exec rm -f {};
+
+10. Find Last 50 Days Modified Files To find all the files which are modified 50 days back.
+find / -mtime 50
+
+11. Find Specific Files and Delete Find all .mp3 files with more than 10MB and delete them using one single command.
+find / -type f -name *.mp3 -size +10M -exec rm {} ;
+
+
